@@ -1,0 +1,47 @@
+{% include 'auctioner_header.html'%}
+<div style=" background:url('/static/images/banner.jpg') ; height: 600px; width: 100%; background-size: cover;" >
+<br><br><br><br><br>
+<center>
+	<div class="top" style="width:600px">	
+	<h1 style="color:white;">View Auctions</h1>
+	<table class="table" style="width:600px;color:white;">
+		<tr>
+			<th>Slno,</th>
+			<th>Batch No</th>
+			<th>Weight</th>
+			<th>Auction Date</th>
+			<th>End Date</th>
+			<th>Time</th>
+			<th>Amount</th>
+			<th>Status</th>
+			
+			
+		</tr>
+		{%for row in data['auction']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['auction']}}</td>
+			<td>{{row['weight']}}</td>
+			<td>{{row['auction_date']}}</td>
+			<td>{{row['end_date']}}</td>
+			<td>{{row['time']}}</td>
+			<td>{{row['amount']}}</td>
+			{%if row['status']=="stop"%}
+			<td><a href="view_bid?id={{row['auction_id']}}" class="btn btn-info">View bid</a></td>
+			{%else%}
+			<td>{{row['status']}}</td>
+			{%endif%}
+			
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+</div>
+</div>
+
+<style type="text/css">
+	.top{
+		background-color: rgba(255, 255, 255, .2);
+	}
+</style>
+{%include 'footer.html'%}

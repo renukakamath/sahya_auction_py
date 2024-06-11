@@ -1,0 +1,39 @@
+{% include 'seller_header.html'%}
+<!-- <div style="margin-bottom: 1em; margin-top: 3em; background:url('/static/images/banner.jpg') ; height: 300px; width: 100%; background-size: cover;" > -->
+   
+<center>
+<div class="product">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="titlepage">
+                     <h2>Our Fertilizer</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+           <div class="row">
+             
+      
+          {% for fertilizer in data['fer'] %}
+
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 padding_left0">
+                  <div class="product_box">
+                     <figure><img src="/{{ fertilizer['image'] }}" style="width: 100; height: 100;" ></figure>
+                      Product Name:<h2 class="product-name">{{ fertilizer['fertilizer'] }}</h2>
+                      Product Details:<p class="product-description">{{ fertilizer['details'] }}</p>
+                      Product Amount:<p class="product-price">Rs.{{ fertilizer['price'] }}</p>
+                       <a href="seller_book_product?fid={{fertilizer['fertilizer_id']}}&sid={{fertilizer['stock']}}&amt={{fertilizer['price']}}" class="btn btn-warning">Book Now</a>
+                  </div>
+               </div>
+    
+            {% endfor %}
+                 </div>
+         </div>
+         </div>
+       </center>
+
+
+  
+{% include 'footer.html'%}

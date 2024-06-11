@@ -1,0 +1,69 @@
+{% include 'seller_header.html'%}
+<div style="margin-bottom: 1em; margin-top: 3em; background:url('/static/images/banner.jpg') ; height: 400px; width: 100%; background-size: cover;" >
+    
+                     
+   <br><br>    <br><br>                 
+ <center>
+    {% if data['up'] %}
+    <form method="post" enctype="multipart/form-data">
+        <h1 style="color:white;">Update Quality</h1>
+       <table class="table" style="width:500px;color: white;">
+            <tr>
+                <th>Quality</th>
+                <td><input type="text"name="quality" required="" class="form-control" value="{{data['up'][0]['quality']}}"></td>
+            </tr>
+            
+            <tr>
+                <th>Grade</th>
+                <td><input type="text"name="percent" required="" class="form-control" value="{{data['up'][0]['percent']}}"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" class="btn btn-outline-success" name="update"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% else %}
+    <form method="post" enctype="multipart/form-data">
+        <h1 style="color:white;">Quality</h1>
+        <table class="table" style="width:500px;margin-top: 15px;color: white;">
+            <tr>
+                <th>quality</th> 
+                <td><input type="text" name="quality"  required="" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Grade</th>
+                <td><input type="text" name="percent" required="" class="form-control"></td>
+            </tr>
+            <tr>
+                
+                <td align="center" colspan="2"><input class="btn btn-outline-success" type="submit" name="submit"></td>
+            </tr>
+        </table>
+    </form>
+    {% endif %}
+ </center> 
+</div>
+     <br><br>          
+ <center>
+    <h1>manage quality</h1>
+    <table class="table" style="width:600px">
+        <tr>
+            <th>Slno</th>
+            <th>Quantity</th>
+            <th>Guide</th>
+        </tr>
+        {%for row in data['qua']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{row['quality']}}</td>
+            <td>{{row['percent']}}</td>
+            <td><a href="?action=update&id={{row['quality_id']}}" class="btn btn-outline-success">Update</a></td>
+            <td><a href="?action=delete&id={{row['quality_id']}}" class="btn btn-outline-danger">Delete</a></td>
+            
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
+ <br><br><br>
+  {% include 'footer.html'%}  

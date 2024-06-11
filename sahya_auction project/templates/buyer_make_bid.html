@@ -1,0 +1,50 @@
+{%include 'buyer_header.html'%}
+<div style=" background:url('/static/images/banner.jpg') ; height: 400px; width: 100%; background-size: cover;" >
+<br><br><br><br>
+
+<center>
+	<div class="top" style="width:600px">	
+	<h1 style="color:white;">PARTICIPATE</h1>
+	<h1 style="color:white;">CURRENT BID AMOUNT-{{data['minamt']}}</h1>
+	<form method="post">
+		<table class="table" style="color: white;width: 500px" >
+			<tr>
+				<th> MY AMOUNT</th>
+				<td><input type="number" class="form-control" name="myamt" min="{{data['minamt'] |int+1}}" placeholder="MINIMUM IS {{data['minamt'] |int +1}} "></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-success" value="BID"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</div>
+</div>
+<center>
+	<h1>view history</h1>
+	<table class="table" style="width:600px" >
+    <tr>
+    	<!-- <th>CUSTOMER</th> -->
+    	<th>AMOUNT</th>
+    	<TH>TIME</TH>
+    	<th>DATE</th>
+
+    </tr>
+    {% for row in data['bid'] %}
+    <tr>
+    	<td>{{loop.index}}</td>
+    	<!-- <td>{{row['Firstname']}} {{row['Lastname']}}</td> -->
+    	<td>{{row['amount']}}</td>
+    	<td>{{row['date']}}</td>
+    </tr>
+    {% endfor %}
+		
+	</table>
+	</center>
+
+<style type="text/css">
+	.top{
+		background-color: rgba(255, 255, 255, .2);
+	}
+</style>
+{% include 'footer.html' %}

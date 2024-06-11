@@ -1,0 +1,134 @@
+
+{%include 'admin_header.html'%}
+   <div style=" background:url('/static/images/banner.jpg') ; height: 700px; width: 100%; background-size: cover;" >
+   <br><br><br>
+    <center>
+        {% if data ['up'] %}
+        <form method="post" enctype="multipart/form-data">
+            <h1 style="color:white;">Update Product</h1>
+            <table class="table" style="width:600px;color:white;">
+                <!-- <tr>
+                    <th>Quality</th>
+                   
+                    <td><select name="qty" id="" required="" class="form-control">
+                        <option value="{{data['up'][0]['quality_id']}}" name="qty"></option>
+                        {%for r in data['quality'] %}
+                        <option value="{{r['quality_id']}}">{{r['quality']}}</option>
+                        {%endfor%}
+                    </select></td>
+                </tr> -->
+                <tr>
+                    <th>Products </th>
+                    <td><input type="text" value="{{data['up'][0]['product']}}" name="product" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>weight</th>
+                    <td><input type="text" value="{{data['up'][0]['weight']}}" name="weight" required="" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <th>Detils</th>
+                    <td><input type="text" value="{{data['up'][0]['details']}}" name="details" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Rate</th>
+                    <td><input type="text" value="{{data['up'][0]['rate']}}"  name="rate" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td><input type="text" value="{{data['up'][0]['stock']}}"  name="stock" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>image</th>
+                    <td><input type="file" value="{{data['up'][0]['image']}}" name="image" required="" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <td align="center" colspan="2"><input type="submit" name="update" class="btn btn-outline-success"></td>
+                </tr>
+            </table>
+        </form>
+        {% else %}
+        <br><br><br><br>
+        <form method="post" enctype="multipart/form-data">
+            <h1 style="color:white;">Manage Product</h1>
+            <table class="table" style="width:600px;color:white;">
+                <tr>
+                    <th>Quality</th>
+                   
+                    <td><select name="qty" id="" required="" class="form-control">
+                        <option>select quantity ---</option>
+                        {%for r in data['quality'] %}
+                        <option value="{{r['quality_id']}}">{{r['quality']}}</option>
+                        {%endfor%}
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Product </th>
+                    <td><input type="text"name="product" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>weight</th>
+                    <td><input type="text"name="weight" required="" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <th>Details</th>
+                    <td><input type="text"name="details" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Rate</th>
+                    <td><input type="text" name="rate" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td><input type="text" name="stock" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>image</th>
+                    <td><input type="file" name="image" required="" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-outline-success"></td>
+                </tr>
+            </table>
+        </form>
+        </center>
+          {% endif %}
+     </div>  
+
+     
+ <center>
+    <h1>Manage Product</h1>
+    <table class="table" style="width:600px;">
+        <tr>
+            <th>slno</th>
+            <th>quality</th>
+            <th>product</th>
+            <th>weight</th>
+            <th>details</th>
+            <th>rate</th>
+            <th>Stock</th>
+            <th>Image</th>
+            
+        </tr>
+        {%for row in data['pros']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{row['quality']}}</td>
+            <td>{{row['product']}}</td>
+            <td>{{row['weight']}}</td>
+            <td>{{row['details']}}</td>
+            <td>{{row['rate']}}</td>
+            <td>{{row['stock']}}</td>
+            <td><a href="/{{row['imag']}}" class="btn btn-primary">Click Here</a></td> 
+            
+            <td><a href="?action=update&id={{row['product_id']}}" class="btn btn-outline-success">Update</a></td>
+            <td><a href="?action=delete&id={{row['product_id']}}" class="btn btn-outline-danger">Delete</a></td>
+            
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
+{%include 'footer.html'%}

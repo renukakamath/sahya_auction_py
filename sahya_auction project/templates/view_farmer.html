@@ -1,0 +1,33 @@
+{% include 'admin_header.html'%}
+<div style="margin-bottom: 1em; margin-top: 3em; background:url('/static/images/banner.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+    </div>
+ <center>
+    <h1>View Farmer</h1>
+    <table>
+        <tr>
+            <th>Famer Id</th>
+            <th>Login Id</th>
+            <th>Name</th>
+            <th>place</th>
+            <th>phone</th>
+            <th>email</th>
+            <th>status</th>
+        </tr>
+        {%for row in data['sel']%}
+        <tr>
+            <td>{{row['farmer_id']}}</td>
+            <td>{{row['login_id']}}</td>
+            <td>{{row['farmer_name']}}</td> 
+            <td>{{row['place']}}</td>
+            <td>{{row['phone']}}</td>
+            <td>{{row['email']}}</td>
+            {%if row['usertype']=="pending"%}
+            <td><a href="?action=accept&id={{row['login_id']}}">Accept</a></td>
+            <td><a href="?action=reject&id={{row['login_id']}}">Reject</a></td> 
+            {%else%}
+            <td>{{row['usertype']}}</td>
+            {%endif%}
+        </tr>
+        {%endfor%}
+    </table>
+ </center>

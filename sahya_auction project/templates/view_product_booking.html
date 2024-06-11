@@ -1,0 +1,29 @@
+{%include 'product_admin_header.html'%}
+<div style="margin-bottom: 1em; margin-top: 3em; background:url('/static/images/banner.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+    </div>
+<center>
+    <h1>Product Booking</h1>
+    <table>
+        <tr>
+            <th>Booking Product ID</th>
+            <th>Booking Id</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>tatus</th>
+            
+        </tr>
+        {%for row in data['bokpro']%}
+        <tr>
+            <td>{{row['bookingchild_id']}}</td>
+            <td>{{row['booking_id']}}</td>
+            <td>{{row['product_id']}}</td>
+            <td>{{row['quantity']}}</td>
+            <td>{{row['amount']}}</td>
+            <td>{{row['status']}}</td>
+           
+            
+        </tr>
+        {%endfor%}
+    </table>
+ </center>

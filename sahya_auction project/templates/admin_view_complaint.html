@@ -1,0 +1,32 @@
+{%include 'admin_header.html'%}
+<div style=" background:url('/static/images/banner.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+	</div>
+<center>
+	
+	<table class="table" style="width:500px;">
+		<h1>complaint list</h1>
+		<tr>
+			<th>slno.</th>
+			<th>Name</th>
+			<th>complaints</th>
+			<th>replay</th>
+			<th>date</th>
+		</tr>
+		{%for row in data['comp']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['buyer_name']}}</td>
+			<td>{{row['complaint']}}</td>
+			
+			{% if row['reply']=='pending' %}
+			<td><a href="admin_reply?id={{row['complaint_id']}}" class="btn btn-outline-danger">send replay</a></td>
+			{%else%}
+			<td>{{row['reply']}}</td>
+			{%endif%}
+			<td>{{row['date']}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</center>
+<br><br><br>
+{%include 'footer.html'%}

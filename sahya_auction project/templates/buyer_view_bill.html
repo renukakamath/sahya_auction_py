@@ -1,0 +1,45 @@
+{% include 'buyer_header.html' %}
+
+<div style=" background:url('/static/images/banner.jpg') ; height: 700px; width: 100%; background-size: cover;" >
+<br><br><br><br><br>
+<center>
+	
+	<div class="top" style="width:600px">	
+<h1 style="color:white;">BILL</h1>
+
+	<form method="post">
+<table class="table" style="color: white;width:600px">
+	<tr>
+		<th>SELLER NAME</th>
+		<td style="color: white">{{data['auction'][0]['seller_name']}}</td>
+	</tr>
+	<tr>
+
+		<th>QUALITY</th>
+		<td style="color: white">{{data['auction'][0]['quality']}}</td>
+</tr>
+<!-- <tr>
+	
+		<th>Quantity</th>
+		<td style="color: white">{{data['auction'][0]['quantity']}}</td>
+	
+</tr> -->
+<tr>
+	<th>AMOUNT</th>
+	<td class="btn btn-primary" style="color: white">{{data['amt']}}</td>
+</tr>
+</table>
+
+</center>
+
+</form></div>
+</center></div>
+		</div>
+
+		<style type="text/css">
+			.top{
+
+				background-color: rgba(255, 255, 255, .2);
+			}
+		</style>
+{% include 'footer.html' %}

@@ -1,0 +1,31 @@
+{%include 'admin_header.html'%}
+<div style="margin-bottom: 1em; margin-top: 3em; background:url('/static/images/banner.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+    </div>
+<center>
+    <h1>Complaint</h1>
+    <table>
+        <tr>
+            <th>Slno.</th>
+            <th>User ID</th>
+            <th>Complaint</th>
+            <th>Replay</th>
+            <th>Date</th>
+            <th>Status</th>
+            
+        </tr>
+        {%for row in data['complt']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{row['user_id']}}</td>
+            <td>{{row['complaint']}}</td>
+            <td>{{row['reply']}}</td>
+            <td>{{row['date']}}</td>
+            <td>{{row['status']}}</td>
+            {%if row['status']=="pending"%}
+            <td><a href="sent_reply?id={{row['complaint_id']}}">Reply</a></td>
+             
+            {%endif%}
+        </tr>
+        {%endfor%}
+    </table>
+ </center>

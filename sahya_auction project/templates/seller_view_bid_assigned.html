@@ -1,0 +1,69 @@
+
+
+{%include 'seller_header.html'%}
+
+
+
+<center>
+<form method="post">
+	
+		{% if data['assigned'] %}
+	<table class="table" style="color: black">
+		<tr>
+			<th>CUSTOMER</th>
+			<td>{{data['assigned']['Firstname']}}</td>
+		</tr>
+		<tr>
+			<th>PLACE</th>
+			<td>{{data['assigned']['Place']}}</td>
+		</tr>
+		<tr>
+			<th>ADDREES</th>
+			<td>{{data['assigned']['Address']}}</td>
+		</tr>
+			<tr>
+			<th>PHONE</th>
+			<td>{{data['assigned']['Phone']}}</td>
+		</tr>
+		<tr>
+			<th>AMOUNT</th>
+			<td colspan="2" align="center">{{data['assigned']['amt']}}</td>
+		</tr>
+		{% if data['amt'] %}
+		<tr>
+			<th>STATUS</th>
+			<td colspan="2" align="center" style="color: red"> PAIED</td>
+		</tr>
+		{% else %}
+<tr>
+	<th>STATUS</th>
+			<td colspan="2" align="center" style="color: red">NOT PAIED</td>
+		</tr>
+		{% endif %}
+
+	{% endif%}
+</form>
+	<h1>View BID Assigned</h1>
+	<form>
+		<table class="table" style="color: black;width: 500px">
+			<tr>
+				<th>sl.no</th>
+				
+				<th>quality</th>
+				<th>quantity</th>
+				
+				{% for row in data['auction'] %}
+              <tr>
+              	<td>{{loop.index}}</td>
+              	
+              	<td>{{row['Quality']}}</td>
+              	<td>{{row['Quantity']}}</td>
+              	<td><a href="?action=Assigned&aid={{row['auction_id']}}">VIEW BID ASSIGNED</a></td>
+			</tr>
+			{% endfor %}
+			
+		</table>
+	</form>
+	</center>
+
+{% include 'footer.html' %}

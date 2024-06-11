@@ -1,0 +1,49 @@
+{% include 'auctioner_header.html' %}
+
+
+<div style=" background:url('/static/images/banner.jpg') ; height: 500px; width: 100%; background-size: cover;" >
+   <br><br><br>
+	
+		<center>
+		<form method="post">
+
+<h1 style="color:white;">PARTICIPATE AUCTION</h1>
+
+	<table class="table" style="width:600px;color:white;">
+		
+		<tr>
+			<th>AMOUNT</th>
+			<td><input type="number" name="amt" value="{{data['amt']}}" class="form-control" required=""></td>
+		</tr>
+		<tr>
+			<th>AUCTION START DATE</th>
+			<td><input type="date" name="date" class="form-control" required="" min="{{today}}"></td>
+	</tr>
+		<tr>
+			<th>AUCTION END DATE</th>
+			<td><input type="date" name="edate" class="form-control" max="" required=""></td>
+	</tr>
+	<tr>
+			<th>AUCTION TIME</th>
+			<td><input type="time" name="time" class="form-control" required=""></td>
+	</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="Add" class="btn btn-outline-info" ></td>
+		</tr>
+	</table>
+		
+
+
+
+</center>
+
+					</div>
+					
+
+
+</form>
+
+
+
+
+{% include 'footer.html'%}

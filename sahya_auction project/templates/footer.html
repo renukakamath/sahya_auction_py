@@ -1,0 +1,38 @@
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+    {% for message in messages %}
+    <script type="text/javascript">alert("{{message}}")</script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<!--  footer -->
+      <footer id="contact">
+         <div class="footer">
+           
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>Copyright 2023 All Right Reserved By <a href="https://html.design/"> Sahya Auction</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="/static/js/jquery.min.js"></script>
+      <script src="/static/js/popper.min.js"></script>
+      <script src="/static/js/bootstrap.bundle.min.js"></script>
+      <script src="/static/js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="/static/js/custom.js"></script>
+   </body>
+</html>
+

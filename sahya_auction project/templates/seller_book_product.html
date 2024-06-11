@@ -1,0 +1,46 @@
+{%include 'seller_header.html'%}
+<div style=" background:url('/static/images/banner.jpg') ; height: 500px; width: 100%; background-size: cover;" >
+
+
+<br><br><br><br>
+
+
+<script type="text/javascript">
+		function TestOnTextChange(){
+
+			var a= document.getElementById("amount").value;
+			var b= document.getElementById("nopn").value;
+								 		
+			var s=parseInt(a)*parseInt(b)
+			alert(s);
+			document.getElementById("total").value=s;
+								 		
+								 		
+			}
+	</script>
+
+<center>
+<h1 style="color:white ;">View Booking</h1>
+<form method="post">
+<table  class="table" style="color: white;width:600px">
+	<tr>
+		<td>Quantity</td>
+		<td><select name="quantity" required="" class="form-control" onchange="TestOnTextChange()" id="nopn"> 
+			{% for i in range (1,data['qua'] |int+1)  %}
+			<option>{{i}}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	<tr>
+		<input type="hidden" required="" class="form-control" name="amount" id="amount" value="{{data['amt']}}">
+		<td>Amount</td>
+		<td><input type="number" required="" class="form-control" name="total_amount" id="total" value="{{data['amt']}}"></td>
+		<td><input type="submit" name="submit" value="Buy" class="btn btn-info"></td>
+	</tr>
+		
+
+</table>
+</center>
+		</div>
+					
+{% include 'footer.html' %}

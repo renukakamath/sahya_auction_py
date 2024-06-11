@@ -1,0 +1,103 @@
+{%include 'admin_header.html'%}
+<div style="margin-bottom: 1em; margin-top: 3em; background:url('/static/images/banner.jpg') ; height: 700px; width: 100%; background-size: cover;" >
+<br><br><br>
+    <center>   
+{% if data ['up'] %}
+ 
+        
+        <form method="post">
+            <h1 style="color:white;">Update Auctioner</h1>
+            <table class="table" style="width:500px;color:white;">
+                <tr>
+                    <th>Name </th>
+                    <td><input type="text"name="autioner_name" required="" value="{{data['up'][0]['auctioner_name']}}" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>place</th>
+                    <td><input type="text"name="place" required="" value="{{data['up'][0]['place']}}" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <th>Mobile</th>
+                    <td><input type="tel"name="phone" required="" value="{{data['up'][0]['phone']}}" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email" name="email" required="" value="{{data['up'][0]['email']}}" class="form-control"></td>
+                </tr>
+               
+                <tr>
+                    <td align="center" colspan="2"><input type="submit" name="update" class="btn btn-outline-success"></td>
+                </tr>
+            </table>
+        </form>
+        </center>
+        {% else %}
+        <br><br><br>
+        <center>
+        <form method="post">
+           
+        <h1 style="color:white;">Auctioneer Registration</h1>
+            <table class="table" style="width:500px;color:white;">
+                <tr>
+                    <th>Name </th>
+                    <td><input type="text"name="autioner_name" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>place</th>
+                    <td><input type="text"name="place" required="" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <th>Mobile</th>
+                    <td><input type="tel"name="phone" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email" name="email" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td><input type="text" name="uname" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>password</th>
+                    <td><input type="password" name="password" required="" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-outline-success"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+          {% endif %}
+   
+
+  </div>   
+ <center>
+    <h1>Auctioneers</h1>
+    <table class="table" style="width:600px">
+        <tr>
+            <th>Slno</th>
+            <th>Name</th>
+            <th>Place</th>
+            <th>phone</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {%for row in data['aur']%}
+        <tr>
+            <td>{{row['auctioner_id']}}</td>
+            <td>{{row['auctioner_name']}}</td>
+            <td>{{row['place']}}</td>
+            <td>{{row['phone']}}</td>
+            <td>{{row['email']}}</td>
+            <td><a href="?action=update&id={{row['auctioner_id']}}" class="btn btn-outline-success">Update</a></td>
+            <td><a href="?action=delete&id={{row['auctioner_id']}}" class="btn btn-outline-danger">Delete</a></td>
+            
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
+{%include 'footer.html'%}

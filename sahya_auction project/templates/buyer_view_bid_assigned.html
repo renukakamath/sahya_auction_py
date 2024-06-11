@@ -1,0 +1,98 @@
+{% include 'buyer_header.html' %}
+<div style=" background:url('/static/images/banner.jpg') ; height: 500px; width: 100%; background-size: cover;" >
+<br><br><br><br><br>
+<center>
+	
+<form method="post">
+	{% if data['amt'] %}
+	<h1 style="color:white;">PAY AND COMPLETE YOUR BOOKING</h1>
+		<table class="table" style="width: 600px;color: white;" >
+			<tr>
+				<th colspan="2" align="left" style="">Payment Details</th>
+			</tr>
+			<tr>
+				<th align="left">CARD NUMBER</th>
+				<td colspan="2" style="color: black"><input placeholder="Enter your Card No." required="" class="form-control" maxlength="16" pattern="[0-9]{16}" type="text" name="cardno" ><td>
+			</tr>
+			<tr>
+				<th>EXP DATE</th>
+				<th align="center"  >CV</th>
+			</tr>
+			<tr>
+				<td style="color: black"><input type="month" name="monthdate"  required="" class="form-control" ></td>
+				<td style="color: black"><input type="text" name="cv" maxlength="3" placeholder="123" pattern="[0-9]{3}"  required="" class="form-control"  ></td>
+			</tr>
+			<tr>
+				<th>AMOUNT</th>
+				<td class="btn btn-warning" align="center">{{data['total']}}</td>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="pay" value="CONFIRM PAYMENT" class="btn btn-primary"></td>
+			</tr>
+		</table>
+
+		{% elif data['assigned'] %}
+	<div class="top" style="width:600px">	
+	<table class="table" style="color: white;width: 600px;">
+		<tr>
+			<th>CUSTOMER</th>
+			<td>{{data['assigned']['buyer_name']}}</td>
+		</tr>
+		<tr>
+			<th>PLACE</th>
+			<td>{{data['assigned']['place']}}</td>
+		</tr>
+		<tr>
+			<th>EMAIL</th>
+			<td>{{data['assigned']['email']}}</td>
+		</tr>
+	
+{% if data['bid'] |int == data['assigned']['buyer_id'] |int %}
+<h1 style="color:white;background: red;width: 600px;">CONGRATULATIONS YOU WIN THE BID !!</h1>
+
+		<h1><a href="?action2=pay&amt={{data['assigned']['amount']}}&aid={{data['assigned']['auction_id']}}" class="btn btn-primary">PAY</a></h1>
+		<h1><a href="buyer_view_bill?amt={{data['assigned']['amount']}}&aid={{data['assigned']['auction_id']}}" class="btn btn-warning"> BILL</a></h1>
+	</table>
+	{% endif %}
+	{% endif%}
+</form>
+</center>
+</div></div>
+
+<div class="top">
+<center>
+	<h1 style="color:black;"> BID Assigned</h1>
+	<form>
+		<table class="table" style="width: 600px;">
+			<tr>
+				<th>sl.no</th>
+				<th>seller name</th>
+				<th>phone</th>
+				<th>email</th>
+				<th>quality</th>
+				
+			</tr>
+				{% for row in data['auction'] %}
+              <tr>
+              	<td>{{loop.index}}</td>
+              	<td>{{row['seller_name']}}</td>
+              	<td>{{row['phone']}}</td>
+              	<td>{{row['email']}}</td>
+              	<td>{{row['quality']}}</td>
+              	
+              	<td><a href="?action=Assigned&aid={{row['auction_id']}}" class="btn btn-info">VIEW BID ASSIGNED</a></td>
+			</tr>
+			{% endfor %}
+			
+		</table>
+	</form>
+	</center>
+</div></div>
+<style type="text/css">
+	.top{
+		background-color: rgba(255, 255, 255, .2);
+
+	}
+</style>yle
+
+
+{% include 'footer.html' %}

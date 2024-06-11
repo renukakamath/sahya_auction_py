@@ -1,0 +1,47 @@
+{% include 'seller_header.html' %}
+<div style=" background:url('/static/images/banner.jpg') ; height: 500px; width: 100%; background-size: cover;" >
+
+<br><br><br>
+<center>
+	<div class="top" style="width:600px">	
+
+	<h1 style="color:white;">BOOKING DETAILS</h1>
+
+	<form method="post">
+<table class="table" style="width:500px;color:white;">
+	<tr>
+		<th>Holder name</th>
+		<td><input type="text" name="hname"  placeholder="Enter your Name" required class="form-control"></td>
+	</tr>
+	<tr>
+		
+		<th>Card Number</th>
+		<td><input type="text" maxlength="16" pattern="[0-9]{16}" placeholder="Enter your Card No." name="hname" placeholder="holder name" required class="form-control"></td>
+	</tr>
+		<th>CVV</th>
+		<td><input type="text" maxlength="3" pattern="[0-9]{3}" placeholder="123" name="cvv" required class="form-control"></td>
+	</tr>
+	<tr>
+		<th>Expire Date</th>
+		<td><input type="date" name="date" required class="form-control" ></td>
+	</tr>
+	<tr>
+		<th>Amount</th>
+		<td><input type="text" name="amount" value="{{amount}}" class="form-control"></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-danger"></td>
+	</tr>
+</table>
+</form>
+</center>
+</div>
+</div>
+
+<style type="text/css">
+	.top{
+		background-color: rgba(255, 255, 255, .2);
+	}
+</style>
+	
+{% include 'footer.html' %}

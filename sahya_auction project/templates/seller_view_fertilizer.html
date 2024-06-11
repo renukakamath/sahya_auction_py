@@ -1,0 +1,29 @@
+{%include 'seller_header.html'%}
+<center>
+    <h1>Manage fertilizer</h1>
+    <table class="table" style="width:600px">
+        <tr>
+            <th>Slno</th>
+            <th>fertilizer</th>
+            <th>details</th>
+            <th>price</th>
+            <th>Stock</th>
+            <th>Image</th>
+            
+        </tr>
+        {%for row in data['fer']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            
+            <td>{{row['fertilizer']}}</td>
+            <td>{{row['details']}}</td>
+            <td>{{row['price']}}</td>
+            <td>{{row['stock']}}</td>
+            <td><a href="/{{row['image']}}" class="btn btn-primary">Click Here</a></td> 
+            
+            
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
+{%include 'footer.html'%}

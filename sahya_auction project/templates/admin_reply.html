@@ -1,0 +1,43 @@
+{%include 'admin_header.html'%}
+<div style=" background:url('/static/images/banner.jpg') ; height: 500px; width: 100%; background-size: cover;" >
+<br><br><br><br>
+<center>
+	<form method="post">
+		<h1 style="color:white;"> Replay</h1>
+			<table class="table" style="width:500px;color: white;">
+		<tr>
+			<th>replay</th>
+			<td>
+				<input type="text" name="replay" value="" class="form-control" required>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-danger" value="Replay"></td>
+		</tr>
+	</table>
+	</form>
+</center>
+</div>
+<!-- <center>
+	<h1>complaint list</h1>
+		<table class="table" style="width:500px;margin-top: 12rem;">
+		<tr>
+			<th>slno.</th>
+			
+			<th>complaint</th>
+			<th>replay</th>
+			<th>date</th>
+		</tr>
+		{%for row in data['rep']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			
+			<td>{{row['complaint']}}</td>
+			<td>{{row['replay']}}</td>
+			<td>{{row['date']}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</center> -->
+
+{%include 'footer.html'%}

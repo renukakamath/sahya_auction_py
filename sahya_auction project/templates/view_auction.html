@@ -1,0 +1,39 @@
+{%include 'seller_header.html'%}
+<div style=" background:url('/static/images/banner.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+      <br><br><br><br> 
+<center><h1 style="color:white;font-size: 40px;">Auctions</h1></center>
+</div>
+  <br><br><br><br>  
+<center>
+    
+    <table class="table" style="width:600px;">
+        <tr>
+            <th>Slno </th>
+           
+            <th>Batch No </th>
+            <th>Weight</th>
+            
+            <th>time</th>
+            <th>Amount</th>
+            <th>Image</th>
+            <!-- <th>Winner</th> -->
+            <th>Status</th>
+        </tr>
+        {%for row in data['auct']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{row['auction']}}</td>
+            <td>{{row['weight']}}</td>
+            
+            <td>{{row['time']}}</td>
+            <td><img src="/{{row['image']}}" width="150" height="150"></td>
+            <td>{{row['amount']}}</td>
+            <!-- <td>{{row['winner_id']}}</td> -->
+            <td>{{row['status']}}</td>
+         
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
+
+{%include 'footer.html'%}

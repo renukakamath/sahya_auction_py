@@ -1,0 +1,91 @@
+{%include 'seller_header.html'%}
+   <div style=" background:url('/static/images/banner.jpg') ; height: 500px; width: 100%; background-size: cover;" >
+   <br><br><br>
+    <center>
+        {% if data ['up'] %}
+        <form method="post" enctype="multipart/form-data">
+            <h1 style="color:white;">Update Stock</h1>
+            <table class="table" style="width:600px;color:white;">
+                <!-- <tr>
+                    <th>Quality</th>
+                   
+                    <td><select name="qty" id="" required="" class="form-control">
+                        <option value="{{data['up'][0]['quality_id']}}" name="qty"></option>
+                        {%for r in data['quality'] %}
+                        <option value="{{r['quality_id']}}">{{r['quality']}}</option>
+                        {%endfor%}
+                    </select></td>
+                </tr> -->
+               <tr>
+                    <th>Stock </th>
+                    <td><input type="text"name="stock" required="" class="form-control" value="{{data['up'][0]['stock']}}"></td>
+                </tr>
+                
+                <tr>
+                    <td align="center" colspan="2"><input type="submit" name="update" class="btn btn-outline-success"></td>
+                </tr>
+            </table>
+        </form>
+        {% else %}
+        <br><br><br><br>
+        <form method="post" enctype="multipart/form-data">
+            <h1 style="color:white;">Manage Stock</h1>
+            <table class="table" style="width:600px;color:white;">
+                <tr>
+                    <th>Quality</th>
+                   
+                    <td><select name="qty" id="" required="" class="form-control">
+                        <option>select quantity ---</option>
+                        {%for r in data['qty'] %}
+                        <option value="{{r['quality_id']}}">{{r['quality']}}</option>
+                        {%endfor%}
+                    </select></td>
+                </tr>
+                <!-- <tr>
+                    <th>Seller</th>
+                   
+                    <td><select name="qty" id="" required="" class="form-control">
+                        <option>select seller ---</option>
+                        {%for r in data['seller'] %}
+                        <option value="{{r['seller_id']}}">{{r['seller_name']}}</option>
+                        {%endfor%}
+                    </select></td>
+                </tr> -->
+                <tr>
+                    <th>Stock </th>
+                    <td><input type="text"name="stock" required="" class="form-control"></td>
+                </tr>
+                
+                <tr>
+                    <td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-outline-success"></td>
+                </tr>
+            </table>
+        </form>
+        </center>
+          {% endif %}
+     </div>  
+
+     
+ <center>
+    <h1>Manage Stock</h1>
+    <table class="table" style="width:600px;">
+        <tr>
+            <th>slno</th>
+            <th>quality</th>
+            <th>stock</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {%for row in data['pros']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{row['quality']}}</td>
+            <td>{{row['stock']}}</td>        
+            <td><a href="?action=update&id={{row['stock_id']}}" class="btn btn-outline-success">Update</a></td>
+            <td><a href="?action=delete&id={{row['stock_id']}}" class="btn btn-outline-danger">Delete</a></td>
+            
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
+{%include 'footer.html'%}

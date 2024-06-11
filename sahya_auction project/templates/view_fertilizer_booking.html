@@ -1,0 +1,27 @@
+{%include 'fertilizer_admin_header.html'%}
+<center>
+    <h1>Fertilizer Booking</h1>
+    <table>
+        <tr>
+            <th>Booking fertilizer ID</th>
+            <th>User Id</th>
+            <th>Fertilizer ID</th>
+            <th>Quality</th>
+            <th>date</th>
+            <th>status</th>
+            <th>price</th>
+        </tr>
+        {%for row in data['bokfer']%}
+        <tr>
+            <td>{{row['bookfertilizer_id']}}</td>
+            <td>{{row['user_id']}}</td>
+            <td>{{row['fertilizer_id']}}</td>
+            <td>{{row['quality']}}</td>
+            <td>{{row['date']}}</td>
+            <td>{{row['status']}}</td>
+            <td>{{row['price']}}</td>
+         
+        </tr>
+        {%endfor%}
+    </table>
+ </center>
